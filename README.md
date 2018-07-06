@@ -12,11 +12,15 @@ For example, the simplest definition would need you to provide a name, texture, 
 ```
 hedges.register_hedge("mod_name:hedge_name", {
 	texture = "texture.png",
-	groups = {snappy = 3, flammable = 2, leaves = 1, hedge = 1}, -- should include hedge group
 	material = "mod_name:material_name",	
 })
 
 ```
+
+You can also include the following in the definition:
+
+- description: this will just be "Hedge" if not defined.
+- groups: must include 'hedge = 1'. Will be {snappy = 3, flammable = 2, leaves = 1, hedge = 1} if not defined.
 
 
 Licenses and Attribution 
