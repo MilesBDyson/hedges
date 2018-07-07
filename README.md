@@ -1,6 +1,6 @@
 Hedges
 ======
-Hedges mod for Minetest by Shara RedCat which adds hedges that automatically connect to each other when placed and that can be crafted from leaves.
+Hedges mod for Minetest by Shara RedCat which adds hedges that automatically connect to each other when placed and that can be crafted from leaves. Hedges connect both horizontally and vertically, making it possible to build hedge mazes a player cannot jump over.
 
 
 API
