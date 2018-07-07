@@ -30,19 +30,22 @@ function hedges.register_hedge(name, def)
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
 			local pos_above = {x = pos.x, y = pos.y + 1, z = pos.z}
-			if minetest.get_node(pos_under).name == name then
-				minetest.set_node(pos_under, {name = name .. "_full"})
+			local node_under = string.gsub(minetest.get_node(pos_under).name, "_full$", "")
+			local node_above = string.gsub(minetest.get_node(pos_above).name, "_full$", "")
+
+			if minetest.get_item_group(node_under, "hedge") == 1 then
+				minetest.set_node(pos_under, {name = node_under .. "_full"})
 			end
-			if minetest.get_node(pos_above).name == name or 
-					minetest.get_node(pos_above).name == name .. "_full" then
+			if minetest.get_item_group(node_above, "hedge") == 1 then
 				minetest.set_node(pos, {name = name .. "_full"})
 			end
 		end,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
-			if minetest.get_node(pos_under).name == name .. "_full" and
+			local node_under = string.gsub(minetest.get_node(pos_under).name, "_full$", "")
+			if minetest.get_item_group(node_under, "hedge") == 1 and
 					digger and digger:is_player() then
-				minetest.set_node(pos_under, {name = name})
+				minetest.set_node(pos_under, {name = node_under})
 			end
 		end,
 	})
@@ -68,17 +71,12 @@ function hedges.register_hedge(name, def)
 		light_source = def.light_source or 0,
 		sounds = def.sounds,
 		drop = name,
-		after_place_node = function(pos, placer, itemstack, pointed_thing)
-			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
-			if minetest.get_node(pos_under).name == name then
-				minetest.set_node(pos_under, {name = name .. "_full"})
-			end
-		end,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
-			if minetest.get_node(pos_under).name == name .. "_full" and
+			local node_under = string.gsub(minetest.get_node(pos_under).name, "_full$", "")
+			if minetest.get_item_group(node_under, "hedge") == 1 and
 					digger and digger:is_player() then
-				minetest.set_node(pos_under, {name = name})
+				minetest.set_node(pos_under, {name = node_under})
 			end
 		end,
 	})
@@ -91,9 +89,6 @@ function hedges.register_hedge(name, def)
 			{def.material, def.material, def.material},
 		}
 	})
-
-
-
 end
 
 
