@@ -21,7 +21,8 @@ function hedges.register_hedge(name, def)
 			connect_back = {{-0.3, -0.5, 0.3, 0.3, 0.4, 0.5}},
 		},
 		connects_to = {"group:fence", "group:wood", "group:tree", "group:hedge"},
-		sounds = default.node_sound_leaves_defaults()
+		light_source = def.light_source or 0,
+		sounds = def.sounds or default.node_sound_leaves_defaults(),
 	})
 
 	-- register crafting recipe

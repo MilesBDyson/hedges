@@ -19,8 +19,10 @@ hedges.register_hedge("mod_name:hedge_name", {
 
 You can also include the following in the definition:
 
-- description: this will just be "Hedge" if not defined.
-- groups: must include 'hedge = 1'. Will be {snappy = 3, flammable = 2, leaves = 1, hedge = 1} if not defined.
+- description: "Hedge" if not defined.
+- groups: must include "hedge = 1". Will be {snappy = 3, flammable = 2, leaves = 1, hedge = 1} if not defined.
+- sounds: "default.node_sound_leaves_defaults()" if not defined.
+- light_source: 0 if not defined.
 
 
 Licenses and Attribution 
