@@ -26,7 +26,25 @@ function hedges.register_hedge(name, def)
 		},
 		connects_to = {"group:fence", "group:wood", "group:tree", "group:hedge"},
 		light_source = def.light_source or 0,
-		sounds = def.sounds
+		sounds = def.sounds,
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
+			local pos_above = {x = pos.x, y = pos.y + 1, z = pos.z}
+			if minetest.get_node(pos_under).name == name then
+				minetest.set_node(pos_under, {name = name .. "_full"})
+			end
+			if minetest.get_node(pos_above).name == name or 
+					minetest.get_node(pos_above).name == name .. "_full" then
+				minetest.set_node(pos, {name = name .. "_full"})
+			end
+		end,
+		after_dig_node = function(pos, oldnode, oldmetadata, digger)
+			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
+			if minetest.get_node(pos_under).name == name .. "_full" and
+					digger and digger:is_player() then
+				minetest.set_node(pos_under, {name = name})
+			end
+		end,
 	})
 
 	minetest.register_node(name .. "_full", {
@@ -49,7 +67,20 @@ function hedges.register_hedge(name, def)
 		connects_to = {"group:fence", "group:wood", "group:tree", "group:hedge"},
 		light_source = def.light_source or 0,
 		sounds = def.sounds,
-		drop = name
+		drop = name,
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
+			if minetest.get_node(pos_under).name == name then
+				minetest.set_node(pos_under, {name = name .. "_full"})
+			end
+		end,
+		after_dig_node = function(pos, oldnode, oldmetadata, digger)
+			local pos_under = {x = pos.x, y = pos.y - 1, z = pos.z}
+			if minetest.get_node(pos_under).name == name .. "_full" and
+					digger and digger:is_player() then
+				minetest.set_node(pos_under, {name = name})
+			end
+		end,
 	})
 
 	-- register crafting recipe
