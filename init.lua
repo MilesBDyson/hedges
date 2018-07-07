@@ -3,8 +3,7 @@ local hedges = {}
 
 function hedges.register_hedge(name, def)
 
-	-- register node
-
+	-- register nodes
 	if minetest.get_modpath("default") then
 		def.sounds = def.sounds or default.node_sound_leaves_defaults()
 	end
@@ -30,6 +29,29 @@ function hedges.register_hedge(name, def)
 		sounds = def.sounds
 	})
 
+	minetest.register_node(name .. "_full", {
+		description = def.description or "Hedge",
+		drawtype = "nodebox",
+		paramtype = "light",
+		tiles = {def.texture},
+		groups = def.groups or
+			{snappy = 3, flammable = 2, leaves = 1, hedge = 1,
+			not_in_creative_inventory = 1},
+		waving = 1,
+		node_box = {
+			type = "connected",
+			fixed = {{-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}},
+			connect_left = {{-0.5, -0.5, -0.3, -0.3, 0.5, 0.3}},
+			connect_right = {{0.3, -0.5, -0.3, 0.5, 0.5, 0.3}},
+			connect_front = {{-0.3, -0.5, -0.5, 0.3, 0.5, -0.3}},
+			connect_back = {{-0.3, -0.5, 0.3, 0.3, 0.5, 0.5}},
+		},
+		connects_to = {"group:fence", "group:wood", "group:tree", "group:hedge"},
+		light_source = def.light_source or 0,
+		sounds = def.sounds,
+		drop = name
+	})
+
 	-- register crafting recipe
 	minetest.register_craft({
 		output = name .. " 4",
@@ -38,6 +60,9 @@ function hedges.register_hedge(name, def)
 			{def.material, def.material, def.material},
 		}
 	})
+
+
+
 end
 
 
