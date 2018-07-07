@@ -4,6 +4,11 @@ local hedges = {}
 function hedges.register_hedge(name, def)
 
 	-- register node
+
+	if minetest.get_modpath("default") then
+		def.sounds = def.sounds or default.node_sound_leaves_defaults()
+	end
+
 	minetest.register_node(name, {
 		description = def.description or "Hedge",
 		drawtype = "nodebox",
@@ -22,7 +27,7 @@ function hedges.register_hedge(name, def)
 		},
 		connects_to = {"group:fence", "group:wood", "group:tree", "group:hedge"},
 		light_source = def.light_source or 0,
-		sounds = def.sounds or default.node_sound_leaves_defaults(),
+		sounds = def.sounds
 	})
 
 	-- register crafting recipe
@@ -70,6 +75,7 @@ if minetest.get_modpath("default") then
 	})
 
 end
+
 
 -- alternative recipes using bush leaves
 	minetest.register_craft({
