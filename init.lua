@@ -36,37 +36,40 @@ function hedges.register_hedge(name, def)
 end
 
 
--- register hedges
-hedges.register_hedge("hedges:apple_hedge", {
-	description = "Apple Hedge",
-	texture = "default_leaves.png",
-	material = "default:leaves",
-})
+-- register hedges if default mod found
+if minetest.get_modpath("default") then
 
-hedges.register_hedge("hedges:jungle_hedge", {
-	description = "Jungle Hedge",
-	texture = "default_jungleleaves.png",
-	material = "default:jungleleaves",
-})
+	hedges.register_hedge("hedges:apple_hedge", {
+		description = "Apple Hedge",
+		texture = "default_leaves.png",
+		material = "default:leaves",
+	})
 
-hedges.register_hedge("hedges:pine_hedge", {
-	description = "Pine Hedge",
-	texture = "default_pine_needles.png",
-	material = "default:pine_needles",
-})
+	hedges.register_hedge("hedges:jungle_hedge", {
+		description = "Jungle Hedge",
+		texture = "default_jungleleaves.png",
+		material = "default:jungleleaves",
+	})
 
-hedges.register_hedge("hedges:acacia_hedge", {
-	description = "Acacia Hedge",
-	texture = "default_acacia_leaves.png",
-	material = "default:acacia_leaves",
-})
+	hedges.register_hedge("hedges:pine_hedge", {
+		description = "Pine Hedge",
+		texture = "default_pine_needles.png",
+		material = "default:pine_needles",
+	})
 
-hedges.register_hedge("hedges:aspen_hedge", {
-	description = "Aspen Hedge",
-	texture = "default_aspen_leaves.png",
-	material = "default:aspen_leaves",
-})
+	hedges.register_hedge("hedges:acacia_hedge", {
+		description = "Acacia Hedge",
+		texture = "default_acacia_leaves.png",
+		material = "default:acacia_leaves",
+	})
 
+	hedges.register_hedge("hedges:aspen_hedge", {
+		description = "Aspen Hedge",
+		texture = "default_aspen_leaves.png",
+		material = "default:aspen_leaves",
+	})
+
+end
 
 -- alternative recipes using bush leaves
 	minetest.register_craft({
