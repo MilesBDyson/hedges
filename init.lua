@@ -97,13 +97,13 @@ if minetest.get_modpath("default") then
 
 	hedges.register_hedge("hedges:apple_hedge", {
 		description = "Apple Hedge",
-		texture = "default_leaves.png",
+		texture = "default_leaves_simple.png",
 		material = "default:leaves",
 	})
 
 	hedges.register_hedge("hedges:jungle_hedge", {
 		description = "Jungle Hedge",
-		texture = "default_jungleleaves.png",
+		texture = "default_jungleleaves_simple.png",
 		material = "default:jungleleaves",
 	})
 
@@ -115,7 +115,7 @@ if minetest.get_modpath("default") then
 
 	hedges.register_hedge("hedges:acacia_hedge", {
 		description = "Acacia Hedge",
-		texture = "default_acacia_leaves.png",
+		texture = "default_acacia_leaves_simple.png",
 		material = "default:acacia_leaves",
 	})
 
