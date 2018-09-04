@@ -1,5 +1,5 @@
 
-local hedges = {}
+hedges = {}
 
 function hedges.register_hedge(name, def)
 
@@ -8,7 +8,7 @@ function hedges.register_hedge(name, def)
 		def.sounds = def.sounds or default.node_sound_leaves_defaults()
 	end
 
-	minetest.register_node(name, {
+	minetest.register_node(":" .. name, {
 		description = def.description or "Hedge",
 		drawtype = "nodebox",
 		paramtype = "light",
@@ -50,7 +50,7 @@ function hedges.register_hedge(name, def)
 		end,
 	})
 
-	minetest.register_node(name .. "_full", {
+	minetest.register_node(":" .. name .. "_full", {
 		description = def.description or "Hedge",
 		drawtype = "nodebox",
 		paramtype = "light",
