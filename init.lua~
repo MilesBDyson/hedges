@@ -130,17 +130,17 @@ end
 
 -- alternative recipes using bush leaves
 	minetest.register_craft({
-		output = "hedges:apple_hedge 3",
+		output = "hedges:apple_hedge 4",
 		recipe = {
-			{"", "default:bush_leaves", "default:bush_leaves"},
-			{"", "default:bush_leaves", "default:bush_leaves"},
+			{"default:bush_leaves", "default:bush_leaves", "default:bush_leaves"},
+			{"default:bush_leaves", "default:bush_leaves", "default:bush_leaves"},
 		}
 	})
 
 		minetest.register_craft({
-		output = "hedges:acacia_hedge 3",
+		output = "hedges:acacia_hedge 4",
 		recipe = {
-			{"", "default:acacia_bush_leaves", "default:acacia_bush_leaves"},
-			{"", "default:acacia_bush_leaves", "default:acacia_bush_leaves"},
+			{"default:acacia_bush_leaves", "default:acacia_bush_leaves", "default:acacia_bush_leaves"},
+			{"default:acacia_bush_leaves", "default:acacia_bush_leaves", "default:acacia_bush_leaves"},
 		}
 	})
